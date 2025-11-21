@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SecurePay Check – Fake App Detector</title>
+
+    <!-- Your existing CSS -->
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- 🔥 Modal Security Popup -->
+    <div id="alertModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h3>⚠️ SECURITY ALERT</h3>
+            <p>Fake apps can perfectly mimic UPI interfaces. Always verify using <b>bank SMS</b> or <b>your official app</b>.</p>
+            <button id="modalCta" class="cta-button">Learn More</button>
+        </div>
+    </div>
+
+    <!-- 🔷 Header -->
+    <header>
+        <div class="container">
+            <h1>🛡️ SecurePay Check</h1>
+            <nav>
+                <a href="#scanner">Scanner</a>
+                <a href="#guide">Verification Steps</a>
+                <a href="#compare">Real vs Fake</a>
+                <a href="#faq">FAQs</a>
+                <a href="#team">Team</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ⭐ HERO SECTION -->
+        <section id="hero" class="hero-section">
+            <div class="container">
+                <h2>Detect Fake UPI Apps & Protect Your Money</h2>
+                <p>AI-powered detection tool + security guide to help shopkeepers, delivery agents, and general users detect fake payment receipts instantly.</p>
+                <button class="cta-button" onclick="scrollToScanner()">Start Detecting Fake Apps</button>
+                <p class="warning-text">⚠ Receiving money NEVER requires entering a PIN.</p>
+            </div>
+        </section>
+
+<!-- ⭐ FAKE APP DETECTOR SCANNER -->
+<section id="scanner" class="scanner-section">
+    <div class="container">
+        <h3>🔍 Fake App Detector – Scan Any Brand</h3>
+
+        <!-- 🔗 BACKEND STATUS -->
+        <div id="backendStatus">Backend: checking…</div>
+
+        <!-- Modern Input Wrapper -->
+        <div class="input-wrapper">
+            <label for="brandInput" class="input-label">🔗 Enter URL to Scan</label>
+
+            <div class="input-box">
+                <span class="input-icon">🌐</span>
+                <input id="brandInput" class="brand-input" placeholder="Paste the app website or link here...">
+            </div>
+
+            <button onclick="scanApps()" class="cta-button">Scan Apps</button>
+        </div>
+
+        <!-- Loading -->
+        <div id="loading" style="display:none;">🔍 Scanning…</div>
+
+        <!-- Results Table -->
+        <table id="resultsTable" style="display:none;">
+            <thead>
+                <tr>
+                    <th>App Name</th>
+                    <th>Package ID</th>
+                    <th>Risk Score</th>
+                    <th>Reason</th>
+                </tr>
+            </thead>
+            <tbody id="resultsBody"></tbody>
+        </table>
+
+        <!-- Raw Backend JSON (debug) -->
+        <pre id="backendRaw"></pre>
+
+    </div>
+</section>
+
+       
+<!-- ⭐ 5 KEY VERIFICATION STEPS -->
+<section id="guide" class="guide-section">
+    <div class="container">
+        <h3>🔍 5 Key most importatnd  Steps to Verify a Payment</h3>
+
+        <div class="step-grid">
+
+            <div class="step">
+                <h4>1. Check Bank SMS Alert</h4>
+                <p>The bank’s SMS is the ONLY confirmation of payment. No SMS = No payment.</p>
+            </div>
+
+            <div class="step">
+                <h4>2. Check Balance in Official Bank App</h4>
+                <p>Open your bank app and refresh the balance. If the amount is not credited, the payment is fake.</p>
+            </div>
+
+            <div class="step">
+                <h4>3. Verify UPI Transaction ID (UTR)</h4>
+                <p>Real UPI payments have a unique 12-digit UTR. Check if the UTR appears in your own UPI app or bank statement.</p>
+            </div>
+
+            <div class="step">
+                <h4>4. Look for UI Errors in Fake Apps</h4>
+                <p>Fake apps usually have spelling mistakes, poor layout, or missing animations.</p>
+            </div>
+
+            <div class="step">
+                <h4>5. Ask for Live Scroll</h4>
+                <p>Ask the sender to scroll through transaction history and open details.</p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- ⭐ REAL VS FAKE SCREENSHOT COMPARISON -->
+<section id="compare" class="comparison-section">
+    <div class="container">
+        <h3>📸 Real vs Fake Payment Screen</h3>
+
+        <div class="compare-grid">
+            <div class="card">
+                <h4>Real UPI App</h4>
+                <img src="real-upi.jpg" alt="Real Screenshot">
+            </div>
+
+            <div class="card fake">
+                <h4>Fake UPI Screen</h4>
+                <img src="fake-image.jpg" alt="Fake Screenshot">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ⭐ FAQ -->
+<section id="faq" class="faq-section">
+    <div class="container">
+        <h3>❓ Frequently Asked Questions</h3>
+
+        <div class="accordion-item">
+            <button class="accordion-header">How do I identify a fake payment app?</button>
+            <div class="accordion-content"><p>Fake apps cannot send real bank SMS or update your actual balance.</p></div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-header">The buyer wants me to pay a “verification fee.”</button>
+            <div class="accordion-content"><p>Receiving money NEVER requires paying or entering a PIN.</p></div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-header">What if I already got scammed?</button>
+            <div class="accordion-content"><p>Report immediately at cybercrime.gov.in and inform your bank.</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- ⭐ TEAM -->
+<section id="team" class="team-section">
+    <div class="container">
+        <h3>👥 Our Team</h3>
+
+        <div class="team-grid">
+            <div class="member">
+                <h4>Sangamesh</h4>
+                <p>Frontend Developer & UI Designer</p>
+            </div>
+
+            <div class="member">
+                <h4>Teammate 2</h4>
+                <p>Backend Python Developer</p>
+            </div>
+
+            <div class="member">
+                <h4>Teammate 3</h4>
+                <p>Dataset & Model Creator</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- ⭐ Footer -->
+<footer>
+    <div class="container">
+        <p>&copy; 2025 SecurePay Check. All rights reserved.</p>
+        <p>Educational tool — report fraud at <b>cybercrime.gov.in</b>.</p>
+    </div>
+</footer>
+
+
+<!-- 🔥 Your final JS file -->
+<script src="script.js"></script>
+
+</body>
+</html>
